@@ -54,12 +54,13 @@ class DigalogView extends Ui.WatchFace {
        	view = View.findDrawableById("TimeDate");
        	view.setColor(app.getProperty("ColorDate"));
        	enableSeconds = app.getProperty("EnableSeconds");
-    }
+    }    
 
     // Update the view
     function onUpdate(dc) {
         var clockTime = System.getClockTime();
-        var dateInfo = Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
+        var dateInfo = Time.Gregorian.utcInfo(Time.now().add(new Time.Duration(clockTime.timeZoneOffset)), Time.FORMAT_SHORT);
+        System.println(dateInfo.hour+":"+dateInfo.min+" "+clockTime.timeZoneOffset);
        	var view;   
        	view = View.findDrawableById("HourHandDrawable");
         view.setHours(clockTime.hour,clockTime.min);     
@@ -86,7 +87,7 @@ class DigalogView extends Ui.WatchFace {
         view.setShow(!self.sleep&&enableSeconds);
 
 		view = View.findDrawableById("TimeDay");
-		view.setText(SettingGroups.getWeekDay(dateInfo.day_of_week-1));
+		view.setText(SettingGroups.getWeekDay(dateInfo.day_of_week));
 		
 		view = View.findDrawableById("TimeDate");
 		view.setText(Lang.format(SettingGroups.getSetDateFormat(),[
