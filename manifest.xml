@@ -15,8 +15,8 @@
         <iq:permissions/>
         <iq:languages>
             <iq:language>ces</iq:language>
-            <iq:language>eng</iq:language>
             <iq:language>deu</iq:language>
+            <iq:language>eng</iq:language>
         </iq:languages>
     </iq:application>
 </iq:manifest>
