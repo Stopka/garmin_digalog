@@ -1,0 +1,41 @@
+<strings>
+
+    <string id="AppName">Digalog</string>
+    
+    <string id="TitleColorDay">Wochentagsfarbe</string>
+    <string id="TitleColorDate">Datumsfarbe</string>
+    <string id="TitleColorHour">Stundenfarbe</string>
+    <string id="TitleColorMinute">Minutenfarbe</string>
+    <string id="TitleColorSecond">Sekundenfarbe</string>
+    <string id="TitleEnableSeconds">Sekunden aktivieren</string>
+    <string id="TitleDateFormat">Datumsformat</string>
+    
+    <string id="ColorBlack">Schwarz</string>
+    <string id="ColorWhite">Weiß</string>
+    <string id="ColorRed">Rot</string>
+    <string id="ColorGreen">Grün</string>
+    <string id="ColorBlue">Blau</string>
+    <string id="ColorOrange">Orange</string>
+    <string id="ColorYellow">Gelb</string>
+    <string id="ColorPink">Pink</string>
+    <string id="ColorPurple">Lila</string>
+    <string id="ColorLightGrey">Hellgrau</string>
+    <string id="ColorDarkGrey">Dunkelgrau</string>
+    <string id="ColorDarkRed">Dunkelrot</string>
+    <string id="ColorDarkGreen">Dunkelgrün</string>
+    <string id="ColorDarkBlue">Dunkelblau</string>
+            
+    <string id="DaySunday">Sonntag</string>
+    <string id="DayMonday">Montag</string>
+    <string id="DayTuesday">Dienstag</string>
+    <string id="DayWednesday">Mittwoch</string>
+    <string id="DayThursday">Donnerstag</string>
+    <string id="DayFriday">Freitag</string>
+    <string id="DaySaturday">Samstag</string>
+    
+    <string id="DateFormat00">TT.MM.JJJJ</string>
+    <string id="DateFormat01">TT/MM/JJJJ</string>
+    <string id="DateFormat02">MM/TT/JJJJ</string>
+    <string id="DateFormat03">JJJJ/MM/TT</string>
+    <string id="DateFormat04">JJJJ-MM-TT</string>
+</strings>
