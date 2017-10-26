@@ -2,7 +2,7 @@
 
     <string id="AppName">Digalog</string>
     
-    <string id="TitleColorDay">Barve dne v týdnu</string>
+    <string id="TitleColorDay">Barva dne v týdnu</string>
     <string id="TitleColorDate">Barva data</string>
     <string id="TitleColorHour">Barva hodin</string>
     <string id="TitleColorMinute">Barva minut</string>
