@@ -1,0 +1,16 @@
+<properties>
+
+	<property id="DialWidth" type="number">218</property>
+	
+	<property id="ColorDay" type="number">0x555555</property>
+	<property id="ColorDate" type="number">0x555555</property>
+	
+	<property id="HandSecondRadius" type="number">4</property>
+	<property id="HandSecondOffset" type="number">4</property>
+	<property id="HandMinuteWidth" type="number">20</property>
+	<property id="HandMinuteHeight" type="number">25</property>
+	<property id="HandHourWidth" type="number">30</property>
+	<property id="HandHourHeight" type="number">15</property>
+	<property id="HandHourOffset" type="number">26</property>
+	
+</properties>
