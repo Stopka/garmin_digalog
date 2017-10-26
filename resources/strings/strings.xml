@@ -1,0 +1,41 @@
+<strings>
+
+    <string id="AppName">Digalog</string>
+    
+    <string id="TitleColorDay">Week day color</string>
+    <string id="TitleColorDate">Date color</string>
+    <string id="TitleColorHour">Hour color</string>
+    <string id="TitleColorMinute">Minute color</string>
+    <string id="TitleColorSecond">Second color</string>
+    <string id="TitleEnableSeconds">Enable seconds</string>
+    <string id="TitleDateFormat">Formát data</string>
+    
+    <string id="ColorBlack">Black</string>
+    <string id="ColorWhite">White</string>
+    <string id="ColorRed">Red</string>
+    <string id="ColorGreen">Green</string>
+    <string id="ColorBlue">Blue</string>
+    <string id="ColorOrange">Orange</string>
+    <string id="ColorYellow">Yellow</string>
+    <string id="ColorPink">Pink</string>
+    <string id="ColorPurple">Purple</string>
+    <string id="ColorLightGrey">Light grey</string>
+    <string id="ColorDarkGrey">Dark grey</string>
+    <string id="ColorDarkRed">Dark red</string>
+    <string id="ColorDarkGreen">Dark green</string>
+    <string id="ColorDarkBlue">Dark blue</string>
+            
+    <string id="DaySunday">Sunday</string>
+    <string id="DayMonday">Monday</string>
+    <string id="DayTuesday">Tuesday</string>
+    <string id="DayWednesday">Wednesday</string>
+    <string id="DayThursday">Thursday</string>
+    <string id="DayFriday">Friday</string>
+    <string id="DaySaturday">Saturday</string>
+    
+    <string id="DateFormat00">DD.MM.YYYY</string>
+    <string id="DateFormat01">DD/MM/YYYY</string>
+    <string id="DateFormat02">MM/DD/YYYY</string>
+    <string id="DateFormat03">YYYY/MM/DD</string>
+    <string id="DateFormat04">YYYY-MM-DD</string>
+</strings>

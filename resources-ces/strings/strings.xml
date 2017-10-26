@@ -1,0 +1,41 @@
+<strings>
+
+    <string id="AppName">Digalog</string>
+    
+    <string id="TitleColorDay">Barve dne v týdnu</string>
+    <string id="TitleColorDate">Barva data</string>
+    <string id="TitleColorHour">Barva hodin</string>
+    <string id="TitleColorMinute">Barva minut</string>
+    <string id="TitleColorSecond">Barva vteřin</string>
+    <string id="TitleEnableSeconds">Povolit vteřiny</string>
+    <string id="TitleDateFormat">Formát data</string>
+    
+    <string id="ColorBlack">Černá</string>
+    <string id="ColorWhite">Bílá</string>
+    <string id="ColorRed">Červená</string>
+    <string id="ColorGreen">Zelená</string>
+    <string id="ColorBlue">Modrá</string>
+    <string id="ColorOrange">Oranžová</string>
+    <string id="ColorYellow">Žlutá</string>
+    <string id="ColorPink">Růžová</string>
+    <string id="ColorPurple">Fialová</string>
+    <string id="ColorLightGrey">Světle šedá</string>
+    <string id="ColorDarkGrey">Tmavě šedá</string>
+    <string id="ColorDarkRed">Tmavě červená</string>
+    <string id="ColorDarkGreen">Tmavě zelená</string>
+    <string id="ColorDarkBlue">Tmavě modrá</string>
+            
+    <string id="DaySunday">Neděle</string>
+    <string id="DayMonday">Pondělí</string>
+    <string id="DayTuesday">Úterý</string>
+    <string id="DayWednesday">Středa</string>
+    <string id="DayThursday">Čtvrtek</string>
+    <string id="DayFriday">Pátek</string>
+    <string id="DaySaturday">Sobota</string>
+    
+    <string id="DateFormat00">DD.MM.RRRR</string>
+    <string id="DateFormat01">DD/MM/RRRR</string>
+    <string id="DateFormat02">MM/DD/RRRR</string>
+    <string id="DateFormat03">RRRR/MM/DD</string>
+    <string id="DateFormat04">RRRR-MM-DD</string>
+</strings>
