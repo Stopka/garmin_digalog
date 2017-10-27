@@ -60,7 +60,7 @@ class DigalogView extends Ui.WatchFace {
     function onUpdate(dc) {
         var clockTime = System.getClockTime();
         var dateInfo = Time.Gregorian.utcInfo(Time.now().add(new Time.Duration(clockTime.timeZoneOffset)), Time.FORMAT_SHORT);
-        System.println(dateInfo.hour+":"+dateInfo.min+" "+clockTime.timeZoneOffset);
+        //System.println(dateInfo.hour+":"+dateInfo.min+" "+clockTime.timeZoneOffset);
        	var view;   
        	view = View.findDrawableById("HourHandDrawable");
         view.setHours(clockTime.hour,clockTime.min);     
