@@ -2,13 +2,15 @@
 
     <string id="AppName">Digalog</string>
     
+    <string id="TitleColorBackground">Background color</string>
+    <string id="TitleColorDial">Dial color</string>
     <string id="TitleColorDay">Week day color</string>
     <string id="TitleColorDate">Date color</string>
     <string id="TitleColorHour">Hour color</string>
     <string id="TitleColorMinute">Minute color</string>
     <string id="TitleColorSecond">Second color</string>
     <string id="TitleEnableSeconds">Enable seconds</string>
-    <string id="TitleDateFormat">Formát data</string>
+    <string id="TitleDateFormat">Date format</string>
     
     <string id="ColorBlack">Black</string>
     <string id="ColorWhite">White</string>
@@ -38,4 +40,8 @@
     <string id="DateFormat02">MM/DD/YYYY</string>
     <string id="DateFormat03">YYYY/MM/DD</string>
     <string id="DateFormat04">YYYY-MM-DD</string>
+    
+    <string id="EnableSecondsFalse">Disable</string>
+    <string id="EnableSecondsTrue">Enable in awake mode</string>
+    <string id="EnableSecondsAlways">Enable always</string>
 </strings>

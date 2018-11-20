@@ -2,6 +2,8 @@
 
     <string id="AppName">Digalog</string>
     
+    <string id="TitleColorBackground">Barva pozadí</string>
+    <string id="TitleColorDial">Barva ciferníku</string>
     <string id="TitleColorDay">Barva dne v týdnu</string>
     <string id="TitleColorDate">Barva data</string>
     <string id="TitleColorHour">Barva hodin</string>
@@ -38,4 +40,8 @@
     <string id="DateFormat02">MM/DD/RRRR</string>
     <string id="DateFormat03">RRRR/MM/DD</string>
     <string id="DateFormat04">RRRR-MM-DD</string>
+    
+    <string id="EnableSecondsFalse">Vypnout</string>
+    <string id="EnableSecondsTrue">Povolit mimo úsporný režim</string>
+    <string id="EnableSecondsAlways">Povolit vždy</string>
 </strings>
