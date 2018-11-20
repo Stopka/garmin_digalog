@@ -10,4 +10,5 @@
 	<property id="ColorDial" type="number">2</property>
 	
 	<property id="DateFormat" type="number">0</property>
+	<!--<property id="Version" type="number">0</property>-->
 </properties>

@@ -10,7 +10,7 @@ class DigalogView extends Ui.WatchFace {
 	
 	var buffer = null;
 	var isSleeping = false;
-	var isPartialOff = false;
+	var isPartialOff = true;
 	var enableSeconds = 2;
 	
 	function initialize(){
@@ -48,6 +48,10 @@ class DigalogView extends Ui.WatchFace {
     // @return [Boolean] true if handled, false otherwise
     function onShow(){
     	Ui.WatchFace.onShow();
+    	loadSettings();
+    }
+    
+    function loadSettings(){
     	var drawable;
     	drawable = View.findDrawableById("TimeDay");
         drawable.setColor(SettingGroups.getSetColor("ColorDay"));
@@ -72,7 +76,6 @@ class DigalogView extends Ui.WatchFace {
     // @param [Graphics.Dc] dc The drawing context
     // @return [Boolean] true if handled, false otherwise
     function onUpdate( dc ){
-        System.println("onUpdate");
     	dc.clearClip();
     	var bufferDc = getBufferDc(dc);
     	DialDrawable.draw(bufferDc);
@@ -102,7 +105,11 @@ class DigalogView extends Ui.WatchFace {
         drawable.draw(bufferDc);
         ArrowDrawable.draw(bufferDc,dateTime.hour,dateTime.min);
     	drawBuffer(dc);
-    	if(isSleeping || enableSeconds == 0){
+    	if(
+    		(enableSeconds == 0) ||
+    		(enableSeconds == 1 && isSleeping) ||
+    		(enableSeconds == 2 && isPartialOff && isSleeping) 
+    	){
 	    	drawCenter(dc);
         }else{
         	drawSeconds(dc, dateTime.sec);
@@ -132,7 +139,6 @@ class DigalogView extends Ui.WatchFace {
     }
     
     function onPartialUpdate(dc){
-    	System.println("onPartialUpdate");
     	isPartialOff = false;
     	if(enableSeconds!=2){
     		return;
