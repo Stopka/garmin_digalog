@@ -2,6 +2,8 @@
 
     <string id="AppName">Digalog</string>
     
+    <string id="TitleColorBackground">Hintergrundfarbe</string>
+    <string id="TitleColorDial">Zifferblattsfarbe</string>
     <string id="TitleColorDay">Wochentagsfarbe</string>
     <string id="TitleColorDate">Datumsfarbe</string>
     <string id="TitleColorHour">Stundenfarbe</string>
@@ -38,4 +40,8 @@
     <string id="DateFormat02">MM/TT/JJJJ</string>
     <string id="DateFormat03">JJJJ/MM/TT</string>
     <string id="DateFormat04">JJJJ-MM-TT</string>
+    
+    <string id="EnableSecondsFalse">Deaktivieren</string>
+    <string id="EnableSecondsTrue">Im Wachmodus aktivieren</string>
+    <string id="EnableSecondsAlways">Immer aktivieren</string>
 </strings>

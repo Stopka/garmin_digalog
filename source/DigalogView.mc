@@ -7,114 +7,154 @@ using Toybox.Time as Time;
 using Toybox.System as Sys;
 
 class DigalogView extends Ui.WatchFace {
-	var weekDays;
-	var sleep = true;
-	var enableSeconds=true;
-	var formats;
-    function initialize() {
-    	self.weekDays = [
-    		Rez.Strings.DaySunday,
-			Rez.Strings.DayMonday,
-			Rez.Strings.DayTuesday,
-			Rez.Strings.DayWednesday,
-			Rez.Strings.DayThursday,
-			Rez.Strings.DayFriday,
-			Rez.Strings.DaySaturday
-		];
-		formats=[
-			"$1$.$2$.$3$",
-			"$1$/$2$/$3$",
-			"$2$/$1$/$3$",
-			"$3$/$2$/$1$",
-			"$3$-$2$-$1$"
-		];
-        WatchFace.initialize();
+	
+	var buffer = null;
+	var isSleeping = false;
+	var isPartialOff = false;
+	var enableSeconds = 2;
+	
+	function initialize(){
+		Ui.WatchFace.initialize();
+	}
+
+	// The entry point for the View is onLayout(). This is called before the
+    // View is shown to load resources and set up the layout of the View.
+    // @param [Graphics.Dc] dc The drawing context
+    // @return [Boolean] true if handled, false otherwise
+    function onLayout( dc ){
+    	setLayout(Rez.Layouts.WatchFace( dc ));
+    	if (Gfx has :BufferedBitmap) {              // check to see if device has BufferedBitmap enabled
+	        buffer = new Gfx.BufferedBitmap({
+	        	:width=>dc.getWidth(),
+	            :height=>dc.getHeight()
+			});
+		}
+    }
+    
+    function getBufferDc(dc){
+    	if(buffer){
+    		return buffer.getDc();
+    	}
+    	return dc;
+    }
+    
+    function drawBuffer(dc){
+    	if(buffer){
+    		dc.drawBitmap(0, 0, buffer);
+    	}
     }
 
-    // Load your resources here
-    function onLayout(dc) {
-        setLayout(Rez.Layouts.WatchFace(dc));
-        
+    // When the View is brought into the foreground, onShow() is called.
+    // @return [Boolean] true if handled, false otherwise
+    function onShow(){
+    	Ui.WatchFace.onShow();
+    	var drawable;
+    	drawable = View.findDrawableById("TimeDay");
+        drawable.setColor(SettingGroups.getSetColor("ColorDay"));
+        drawable = View.findDrawableById("TimeDate");
+        drawable.setColor(SettingGroups.getSetColor("ColorDate"));
+        drawable = View.findDrawableById("TimeHours");
+        drawable.setColor(SettingGroups.getSetColor("ColorHour"));
+        drawable = View.findDrawableById("TimeMinutes");
+        drawable.setColor(SettingGroups.getSetColor("ColorMinute"));
+        drawable = View.findDrawableById("TimeSeconds");
+        drawable.setColor(SettingGroups.getSetColor("ColorSecond"));
+        enableSeconds = App.getApp().getProperty("EnableSeconds");
     }
 
-    // Called when this View is brought to the foreground. Restore
-    // the state of this View and prepare it to be shown. This includes
-    // loading resources into memory.
-    function onShow() {
-        var app = App.getApp();
-    	var view;   
-       	view = View.findDrawableById("TimeDay");
-       	view.setColor(app.getProperty("ColorDay"));
-       	view = View.findDrawableById("TimeHours");
-       	view.setColor(app.getProperty("ColorHour"));
-       	view = View.findDrawableById("TimeMinutes");
-       	view.setColor(app.getProperty("ColorMinute"));
-       	view = View.findDrawableById("TimeSeconds");
-       	view.setColor(app.getProperty("ColorSecond"));
-       	view = View.findDrawableById("TimeDate");
-       	view.setColor(app.getProperty("ColorDate"));
-       	enableSeconds = app.getProperty("EnableSeconds");
-    }    
-
-    // Update the view
-    function onUpdate(dc) {
-        var clockTime = System.getClockTime();
-        var dateInfo = Time.Gregorian.utcInfo(Time.now().add(new Time.Duration(clockTime.timeZoneOffset)), Time.FORMAT_SHORT);
-        //System.println(dateInfo.hour+":"+dateInfo.min+" "+clockTime.timeZoneOffset);
-       	var view;   
-       	view = View.findDrawableById("HourHandDrawable");
-        view.setHours(clockTime.hour,clockTime.min);     
-       	view = View.findDrawableById("TimeHours");
-       	var hours = clockTime.hour;
-        if (!Sys.getDeviceSettings().is24Hour) {
-            hours = hours % 12;
+    // When a View is active, onUpdate() is used to update dynamic content.
+    // This function is called when the View is brought to the foreground.
+    // For widgets and watch-apps it is also called when WatchUi.requestUpdate()
+    // is called. For watchfaces it is called once a minute and for datafields
+    // it is called once a second. If a class that extends View does not
+    // implement this function then any Drawables contained in the View will
+    // automatically be drawn.
+    // @param [Graphics.Dc] dc The drawing context
+    // @return [Boolean] true if handled, false otherwise
+    function onUpdate( dc ){
+        System.println("onUpdate");
+    	dc.clearClip();
+    	var bufferDc = getBufferDc(dc);
+    	DialDrawable.draw(bufferDc);
+    	var dateTime = DeviceConfigs.getDateTime();
+    	var drawable;
+    	drawable = View.findDrawableById("TimeDay");
+        drawable.setText(SettingGroups.getWeekDay(dateTime.day_of_week));
+        drawable.draw(bufferDc);
+        drawable = View.findDrawableById("TimeDate");
+        var dateFormat = SettingGroups.getSetDateFormat();
+        var dateString = Lang.format(dateFormat, [
+        		dateTime.day.format("%02d"), 
+        		dateTime.month.format("%02d"),
+        		dateTime.year.format("%04d"),
+        	]);
+        drawable.setText(dateString);
+        drawable.draw(bufferDc);
+    	drawable = View.findDrawableById("TimeHours");
+    	var hour = dateTime.hour;
+    	if(!Sys.getDeviceSettings().is24Hour){
+    		hour = hour%12;
+    	}
+        drawable.setText(hour.format("%02d"));
+        drawable.draw(bufferDc);
+        drawable = View.findDrawableById("TimeMinutes");
+        drawable.setText(dateTime.min.format("%02d"));
+        drawable.draw(bufferDc);
+        ArrowDrawable.draw(bufferDc,dateTime.hour,dateTime.min);
+    	drawBuffer(dc);
+    	if(isSleeping || enableSeconds == 0){
+	    	drawCenter(dc);
+        }else{
+        	drawSeconds(dc, dateTime.sec);
         }
-        view.setText(hours.format("%02d"));
-       	view = View.findDrawableById("CenterDrawable");
-       	view.setShow(self.sleep||!enableSeconds);
-        
-        view = View.findDrawableById("TimeMinutes");
-        view.setText(clockTime.min.format("%02d"));
-        
-        view = View.findDrawableById("MinuteHandDrawable");
-        view.setMinutes(clockTime.min);
-        
-        view = View.findDrawableById("TimeSeconds");
-        view.setText(self.sleep||!enableSeconds?"":clockTime.sec.format("%02d"));
-        
-        view = View.findDrawableById("SecondHandDrawable");
-        view.setSeconds(clockTime.sec);
-        view.setShow(!self.sleep&&enableSeconds);
-
-		view = View.findDrawableById("TimeDay");
-		view.setText(SettingGroups.getWeekDay(dateInfo.day_of_week));
-		
-		view = View.findDrawableById("TimeDate");
-		view.setText(Lang.format(SettingGroups.getSetDateFormat(),[
-			dateInfo.day.format("%02d"),
-			dateInfo.month.format("%02d"),
-			dateInfo.year.format("%04d")
-		]));
-
-        // Call the parent onUpdate function to redraw the layout
-        View.onUpdate(dc);
     }
-
-    // Called when this View is removed from the screen. Save the
-    // state of this View here. This includes freeing resources from
-    // memory.
-    function onHide() {
+    
+    function drawCenter(dc){
+    	var r = DeviceConfigs.getDialDimensions().get(:d)/24;
+    	dc.setColor(SettingGroups.getSetColor("ColorDial"),0);
+		dc.fillEllipse(dc.getWidth()/2,dc.getHeight()/2,r,r);
     }
-
-    // The user has just looked at their watch. Timers and animations may be started here.
-    function onExitSleep() {
-    	self.sleep = false;
-    	
+    
+    function setCenterClip(dc){
+    	var d = DeviceConfigs.getDialDimensions().get(:d);
+    	dc.setClip((dc.getWidth()-d/5)/2,(dc.getHeight()-d/5)/2,d/5,d/5);
     }
-
-    // Terminate any active timers and prepare for slow updates.
-    function onEnterSleep() {
-    	self.sleep = true;
+    
+    function drawSeconds(dc, sec){
+    	SecondDrawable.setClip(dc);
+    	drawBuffer(dc);
+    	SecondDrawable.draw(dc, sec);
+    	setCenterClip(dc);
+    	drawBuffer(dc);
+    	var drawable = View.findDrawableById("TimeSeconds");
+        drawable.setText(sec.format("%02d"));
+        drawable.draw(dc);
+    }
+    
+    function onPartialUpdate(dc){
+    	System.println("onPartialUpdate");
+    	isPartialOff = false;
+    	if(enableSeconds!=2){
+    		return;
+    	}
+    	var time = DeviceConfigs.getTime();
+    	drawSeconds(dc, time.sec);
+    }
+    
+    function onPowerBudgetExceeded(powerInfo){
+    	System.println("onPowerBudgetExceeded");
+    	isPartialOff = true;
+    	Sys.println(powerInfo);
+    }
+    
+    function onEnterSleep(){
+    	System.println("onEnterSleep");
+    	isSleeping = true;
+    }
+    
+    function onExitSleep(){
+    	System.println("onExitSleep");
+    	isSleeping = false;
     }
 
 }

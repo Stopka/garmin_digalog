@@ -1,25 +1,13 @@
 <properties>
-	<property id="EnableSeconds" type="boolean">true</property>
-
-	<property id="DialWidth" type="number">148</property>
+	<property id="EnableSeconds" type="number">2</property>
 	
-	<property id="ColorBase" type="number">0xFFFFFF</property>
-	<property id="ColorDay" type="number">0xFFFFFF</property>
-	<property id="ColorDate" type="number">0xFFFFFF</property>
-	<property id="ColorHour" type="number">0xFF0000</property>
-	<property id="ColorMinute" type="number">0x00AAFF</property>
-	<property id="ColorSecond" type="number">0xFFAA00</property>
-	<property id="ColorBackground" type="number">0x000000</property>
-	
-	<property id="BorderWidth" type="number">1</property>
-	
-	<property id="HandSecondRadius" type="number">3</property>
-	<property id="HandSecondOffset" type="number">2</property>
-	<property id="HandMinuteWidth" type="number">15</property>
-	<property id="HandMinuteHeight" type="number">20</property>
-	<property id="HandHourWidth" type="number">20</property>
-	<property id="HandHourHeight" type="number">10</property>
-	<property id="HandHourOffset" type="number">20</property>
+	<property id="ColorDay" type="number">11</property>
+	<property id="ColorDate" type="number">11</property>
+	<property id="ColorHour" type="number">3</property>
+	<property id="ColorMinute" type="number">5</property>
+	<property id="ColorSecond" type="number">7</property>
+	<property id="ColorBackground" type="number">1</property>
+	<property id="ColorDial" type="number">2</property>
 	
 	<property id="DateFormat" type="number">0</property>
 </properties>
