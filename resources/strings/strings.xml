@@ -9,8 +9,13 @@
     <string id="TitleColorHour">Hour color</string>
     <string id="TitleColorMinute">Minute color</string>
     <string id="TitleColorSecond">Second color</string>
-    <string id="TitleEnableSeconds">Enable seconds</string>
+    <string id="TitleColorIcon">Icon color</string>
+    <string id="TitleColorWarning">Warning color</string>
     <string id="TitleDateFormat">Date format</string>
+    <string id="TitleShowSeconds">Show seconds</string>
+    <string id="TitleShowBattery">Show battery icon</string>
+    <string id="TitleShowConnection">Show connection icon</string>
+    <string id="TitleShowDisturb">Show do not disturb icon</string>
     
     <string id="ColorBlack">Black</string>
     <string id="ColorWhite">White</string>
@@ -41,7 +46,15 @@
     <string id="DateFormat03">YYYY/MM/DD</string>
     <string id="DateFormat04">YYYY-MM-DD</string>
     
-    <string id="EnableSecondsFalse">Disable</string>
-    <string id="EnableSecondsTrue">Enable in awake mode</string>
-    <string id="EnableSecondsAlways">Enable always</string>
+    <string id="SecondsAwake">Enable in awake mode</string>   
+    
+    <string id="BatteryOnLow">When low</string>
+    <string id="BatteryOnCharging">When charging</string>
+    <string id="BatteryOnLowCharging">When low or/and charging</string>
+    
+    <string id="ConnectionConnected">When connected</string>
+    <string id="ConnectionDisconnected">When disconnected</string>
+    
+    <string id="CommonNever">Never</string>
+    <string id="CommonAlways">Always</string>
 </strings>
