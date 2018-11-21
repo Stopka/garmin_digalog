@@ -4,7 +4,36 @@ using Toybox.Graphics as Gfx;
 using Toybox.System as Sys;
 
 class SettingGroups {
-	static var neededVersion = 1;
+	
+	static function checkSettings(){
+		var neededVersion = 1;
+		var version = App.getApp().getProperty("Version");
+		if(version == null){
+			version = 0;
+		}
+		
+		Sys.println("Actual setting version: " + version.format("%03d"));
+		Sys.println("Needed setting version: " + neededVersion.format("%03d"));
+		
+		if(version < neededVersion){
+			migrateSettings(version, neededVersion);
+		}
+	}
+	
+	static function migrateSettings(fromVersion, toVersion){
+		Sys.println("Migrating settings...");
+		var app =  App.getApp();
+		app.setProperty("EnableSeconds", 2);
+		app.setProperty("ColorDay", 11);
+		app.setProperty("ColorDate", 11);
+		app.setProperty("ColorHour", 3);
+		app.setProperty("ColorMinute", 5);
+		app.setProperty("ColorSecond", 7);
+		app.setProperty("ColorBackground", 1);
+		app.setProperty("ColorDial", 2);
+		app.setProperty("Version", toVersion);
+		Sys.println("...migrated");
+	}
 	
 	static function getWeekDay(val){
 		var weekDays=[
@@ -63,35 +92,6 @@ class SettingGroups {
 	
 	static function getSetColor(key){
 		return getColor(App.getApp().getProperty(key));
-	}
-	
-	static function checkSettings(){
-		var version = App.getApp().getProperty("Version");
-		if(version == null){
-			version = 0;
-		}
-		
-		Sys.println("Actual setting version: " + version.format("%03d"));
-		Sys.println("Needed setting version: " + neededVersion.format("%03d"));
-		
-		if(version < neededVersion){
-			migrateSettings(version);
-		}
-	}
-	
-	static function migrateSettings(fromVersion){
-		Sys.println("Migrating settings...");
-		var app =  App.getApp();
-		app.setProperty("EnableSeconds", 2);
-		app.setProperty("ColorDay", 11);
-		app.setProperty("ColorDate", 11);
-		app.setProperty("ColorHour", 3);
-		app.setProperty("ColorMinute", 5);
-		app.setProperty("ColorSecond", 7);
-		app.setProperty("ColorBackground", 1);
-		app.setProperty("ColorDial", 2);
-		app.setProperty("Version", neededVersion);
-		Sys.println("...migrated");
 	}
 	
 }

@@ -9,8 +9,13 @@
     <string id="TitleColorHour">Barva hodin</string>
     <string id="TitleColorMinute">Barva minut</string>
     <string id="TitleColorSecond">Barva vteřin</string>
-    <string id="TitleEnableSeconds">Povolit vteřiny</string>
+    <string id="TitleColorIcon">Barva ikon</string>
+    <string id="TitleColorWarning">Barva varování</string>
     <string id="TitleDateFormat">Formát data</string>
+    <string id="TitleShowSeconds">Zobrazit vteřiny</string>
+    <string id="TitleShowBattery">Zobrazit ikonu baterie</string>
+    <string id="TitleShowConnection">Zobrazit ikonu připojení</string>
+    <string id="TitleShowDisturb">Zobrazit ikonu nerušit režimu</string>
     
     <string id="ColorBlack">Černá</string>
     <string id="ColorWhite">Bílá</string>
@@ -41,7 +46,15 @@
     <string id="DateFormat03">RRRR/MM/DD</string>
     <string id="DateFormat04">RRRR-MM-DD</string>
     
-    <string id="EnableSecondsFalse">Vypnout</string>
-    <string id="EnableSecondsTrue">Povolit mimo úsporný režim</string>
-    <string id="EnableSecondsAlways">Povolit vždy</string>
+    <string id="SecondsAwake">Povolit mimo úsporný režim</string>
+    
+    <string id="BatteryOnLow">Při nízkém stavu</string>
+    <string id="BatteryOnCharging">Při nabíjení</string>
+    <string id="BatteryOnLowCharging">Při nízkém stavu a/nebo nabíjení</string>
+    
+    <string id="ConnectionConnected">Když připojeno</string>
+    <string id="ConnectionDisconnected">Když odpojeno</string>
+    
+    <string id="CommonNever">Nikdy</string>
+    <string id="CommonAlways">Vždy</string>
 </strings>

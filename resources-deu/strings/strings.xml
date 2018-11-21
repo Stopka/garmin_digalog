@@ -9,8 +9,13 @@
     <string id="TitleColorHour">Stundenfarbe</string>
     <string id="TitleColorMinute">Minutenfarbe</string>
     <string id="TitleColorSecond">Sekundenfarbe</string>
-    <string id="TitleEnableSeconds">Sekunden aktivieren</string>
+    <string id="TitleColorIcon">Symbolfarbe</string>
+    <string id="TitleColorWarning">Warnfarbe</string>
     <string id="TitleDateFormat">Datumsformat</string>
+    <string id="TitleShowSeconds">Sekunden anzeigen</string>
+    <string id="TitleShowBattery">Batteriesymbol anzeigen</string>
+    <string id="TitleShowConnection">Verbindungssymbol anzeigen</string>
+    <string id="TitleShowDisturb">Symbol "Bitte nicht stören" anzeigen</string>
     
     <string id="ColorBlack">Schwarz</string>
     <string id="ColorWhite">Weiß</string>
@@ -41,7 +46,15 @@
     <string id="DateFormat03">JJJJ/MM/TT</string>
     <string id="DateFormat04">JJJJ-MM-TT</string>
     
-    <string id="EnableSecondsFalse">Deaktivieren</string>
-    <string id="EnableSecondsTrue">Im Wachmodus aktivieren</string>
-    <string id="EnableSecondsAlways">Immer aktivieren</string>
+    <string id="SecondsAwake">Im Wachmodus</string>
+    
+    <string id="BatteryOnLow">Wenn schwach</string>
+    <string id="BatteryOnCharging">Wenn aufladen</string>
+    <string id="BatteryOnLowCharging">Wenn schwach und/oder aufladen</string>
+    
+    <string id="ConnectionConnected">Wenn verbunden</string>
+    <string id="ConnectionDisconnected">Eenn die Verbindung getrennt ist</string>
+    
+    <string id="CommonNever">Niemals</string>
+    <string id="CommonAlways">Immer</string>
 </strings>

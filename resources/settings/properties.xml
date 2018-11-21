@@ -1,6 +1,4 @@
 <properties>
-	<property id="EnableSeconds" type="number">2</property>
-	
 	<property id="ColorDay" type="number">11</property>
 	<property id="ColorDate" type="number">11</property>
 	<property id="ColorHour" type="number">3</property>
@@ -8,6 +6,13 @@
 	<property id="ColorSecond" type="number">7</property>
 	<property id="ColorBackground" type="number">1</property>
 	<property id="ColorDial" type="number">2</property>
+	<property id="ColorIcon" type="number">11</property>
+	<property id="ColorWarning" type="number">12</property>
+	
+	<property id="ShowSeconds" type="number">2</property>
+	<property id="ShowDisturb" type="number">1</property>
+	<property id="ShowBattery" type="number">3</property>
+	<property id="ShowConnection" type="number">2</property>
 	
 	<property id="DateFormat" type="number">0</property>
 	<!--<property id="Version" type="number">0</property>-->

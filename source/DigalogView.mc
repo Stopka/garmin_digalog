@@ -11,7 +11,7 @@ class DigalogView extends Ui.WatchFace {
 	var buffer = null;
 	var isSleeping = false;
 	var isPartialOff = true;
-	var enableSeconds = 2;
+	var showSeconds = 2;
 	
 	function initialize(){
 		Ui.WatchFace.initialize();
@@ -63,7 +63,7 @@ class DigalogView extends Ui.WatchFace {
         drawable.setColor(SettingGroups.getSetColor("ColorMinute"));
         drawable = View.findDrawableById("TimeSeconds");
         drawable.setColor(SettingGroups.getSetColor("ColorSecond"));
-        enableSeconds = App.getApp().getProperty("EnableSeconds");
+        showSeconds = App.getApp().getProperty("ShowSeconds");
     }
 
     // When a View is active, onUpdate() is used to update dynamic content.
@@ -103,17 +103,19 @@ class DigalogView extends Ui.WatchFace {
         drawable = View.findDrawableById("TimeMinutes");
         drawable.setText(dateTime.min.format("%02d"));
         drawable.draw(bufferDc);
+        IconTopDrawable.draw(bufferDc);
         ArrowDrawable.draw(bufferDc,dateTime.hour,dateTime.min);
     	drawBuffer(dc);
     	if(
-    		(enableSeconds == 0) ||
-    		(enableSeconds == 1 && isSleeping) ||
-    		(enableSeconds == 2 && isPartialOff && isSleeping) 
+    		(showSeconds == 0) ||
+    		(showSeconds == 1 && isSleeping) ||
+    		(showSeconds == 2 && isPartialOff && isSleeping) 
     	){
 	    	drawCenter(dc);
         }else{
         	drawSeconds(dc, dateTime.sec);
         }
+        isPartialOff=true;
     }
     
     function drawCenter(dc){
@@ -140,7 +142,7 @@ class DigalogView extends Ui.WatchFace {
     
     function onPartialUpdate(dc){
     	isPartialOff = false;
-    	if(enableSeconds!=2){
+    	if(showSeconds!=2){
     		return;
     	}
     	var time = DeviceConfigs.getTime();
