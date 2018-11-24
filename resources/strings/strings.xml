@@ -16,6 +16,8 @@
     <string id="TitleShowBattery">Show battery icon</string>
     <string id="TitleShowConnection">Show connection icon</string>
     <string id="TitleShowDisturb">Show do not disturb icon</string>
+    <string id="TitleShowNotification">Show notification icon</string>
+    <string id="TitleShowAlarm">Show alarm icon</string>
     
     <string id="ColorBlack">Black</string>
     <string id="ColorWhite">White</string>
@@ -57,4 +59,6 @@
     
     <string id="CommonNever">Never</string>
     <string id="CommonAlways">Always</string>
+    <string id="CommonIcon">When nonzero, icon only</string>
+    <string id="CommonCount">When nonzero, with count</string>
 </strings>

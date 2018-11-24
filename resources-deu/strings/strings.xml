@@ -16,6 +16,8 @@
     <string id="TitleShowBattery">Batteriesymbol anzeigen</string>
     <string id="TitleShowConnection">Verbindungssymbol anzeigen</string>
     <string id="TitleShowDisturb">Symbol "Bitte nicht stören" anzeigen</string>
+    <string id="TitleShowNotification">Benachrichtigungssymbol anzeigen</string>
+    <string id="TitleShowAlarm">Alarmsymbol anzeigen</string>
     
     <string id="ColorBlack">Schwarz</string>
     <string id="ColorWhite">Weiß</string>
@@ -57,4 +59,6 @@
     
     <string id="CommonNever">Niemals</string>
     <string id="CommonAlways">Immer</string>
+    <string id="CommonIcon">Wenn nicht Null, nur Symbol</string>
+    <string id="CommonCount">Wenn nicht Null, mit Zählung</string>
 </strings>

@@ -16,6 +16,8 @@
     <string id="TitleShowBattery">Zobrazit ikonu baterie</string>
     <string id="TitleShowConnection">Zobrazit ikonu připojení</string>
     <string id="TitleShowDisturb">Zobrazit ikonu nerušit režimu</string>
+    <string id="TitleShowNotification">Zobrazit ikonu notifikací</string>
+    <string id="TitleShowAlarm">Zobrazit ikonu budíku</string>
     
     <string id="ColorBlack">Černá</string>
     <string id="ColorWhite">Bílá</string>
@@ -57,4 +59,6 @@
     
     <string id="CommonNever">Nikdy</string>
     <string id="CommonAlways">Vždy</string>
+    <string id="CommonIcon">Jen nenulové, pouze ikona</string>
+    <string id="CommonCount">Jen nenulové, s počtem</string>
 </strings>
