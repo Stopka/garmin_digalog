@@ -75,10 +75,10 @@ class IconTopDrawable {
 			}
 		}
 		var dim = DeviceConfigs.getDialDimensions();
-		var y=dim.get(:sh)+dim.get(:d)/6;
+		var y=dim.get(:sh)+dim.get(:d)/6.0;
 		var w = dim.get(:d)*0.12;
 		var spacer = w+2;
-		var x=dim.get(:sw)+dim.get(:d)/2-(iconCount-1)*spacer/2;
+		var x=dim.get(:sw)+dim.get(:d)/2.0-(iconCount-1)*spacer/2.0;
 		if(stats[0]){
 			drawBatteryIcon(dc,stats[0],x,y,w);
 			x+=spacer;
@@ -103,8 +103,8 @@ class IconTopDrawable {
 	
 	static function drawBatteryIcon(dc,stats,x,y,width){
 		drawRect(dc,x,y,width);
-		var height=width/2;
-		var thickness=height/4;
+		var height=width/2.0;
+		var thickness=width/8.0;
 		if(stats.get(:battery)<=stats.get(:low) && !stats.get(:charging)){
 			dc.setColor(SettingGroups.getSetColor("ColorWarning"),0);
 		}else{
@@ -149,13 +149,13 @@ class IconTopDrawable {
 	
 	static function drawDisturbIcon(dc,stats,x,y,w){
 		drawRect(dc,x,y,w);
-		var thickness=w/8;
-		var innerw=5*w/7;
+		var thickness=w/8.0;
+		var innerw=5*w/7.0;
 		dc.setPenWidth(thickness);
 		dc.setColor(SettingGroups.getSetColor("ColorIcon"),0);
-		dc.fillEllipse(x, y, innerw/2, innerw/2);
+		dc.fillEllipse(x, y, innerw/2.0, innerw/2.0);
 		dc.setColor(SettingGroups.getSetColor("ColorBackground"),0);
-		dc.drawLine(x-innerw/4, y,x+innerw/4, y);
+		dc.drawLine(x-innerw/4.0, y,x+innerw/4.0, y);
 	}
     
 }

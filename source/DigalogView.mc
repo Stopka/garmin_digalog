@@ -104,6 +104,7 @@ class DigalogView extends Ui.WatchFace {
         drawable.setText(dateTime.min.format("%02d"));
         drawable.draw(bufferDc);
         IconTopDrawable.draw(bufferDc);
+        IconBottomDrawable.draw(bufferDc);
         ArrowDrawable.draw(bufferDc,dateTime.hour,dateTime.min);
     	drawBuffer(dc);
     	if(

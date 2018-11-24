@@ -43,6 +43,24 @@
             <listEntry value="1">@Strings.CommonAlways</listEntry>
         </settingConfig>
     </setting>
+    
+    <setting propertyKey="@Properties.ShowNotification" title="@Strings.TitleShowNotification">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.CommonNever</listEntry>
+            <listEntry value="1">@Strings.CommonIcon</listEntry>
+            <listEntry value="2">@Strings.CommonCount</listEntry>
+            <listEntry value="3">@Strings.CommonAlways</listEntry>
+        </settingConfig>
+    </setting>
+	
+	<setting propertyKey="@Properties.ShowAlarm" title="@Strings.TitleShowAlarm">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.CommonNever</listEntry>
+            <listEntry value="1">@Strings.CommonIcon</listEntry>
+            <listEntry value="2">@Strings.CommonCount</listEntry>
+            <listEntry value="3">@Strings.CommonAlways</listEntry>
+        </settingConfig>
+    </setting>
 	
 	<setting propertyKey="@Properties.ColorBackground" title="@Strings.TitleColorBackground">
         <settingConfig type="list">

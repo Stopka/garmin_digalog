@@ -13,6 +13,8 @@
 	<property id="ShowDisturb" type="number">1</property>
 	<property id="ShowBattery" type="number">3</property>
 	<property id="ShowConnection" type="number">2</property>
+	<property id="ShowNotification" type="number">2</property>
+	<property id="ShowAlarm" type="number">2</property>
 	
 	<property id="DateFormat" type="number">0</property>
 	<!--<property id="Version" type="number">0</property>-->
