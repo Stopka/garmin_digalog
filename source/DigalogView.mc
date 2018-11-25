@@ -168,7 +168,7 @@ class DigalogView extends Ui.WatchFace {
 			d/24/2, 
 			secondsColor, 
 			backgroundColor,
-			1
+			d*0.01
 		);
 		//clip center
     	dc.setClip((dc.getWidth()-d/5)/2,(dc.getHeight()-d/5)/2,d/5,d/5);
