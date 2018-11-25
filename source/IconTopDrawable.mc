@@ -25,6 +25,7 @@ class IconTopDrawable {
 
 	static function getBatteryStats(){
 		var low=10;
+		var limit=20;
 		var show = App.getApp().getProperty("ShowBattery");
 		var stats=Sys.getSystemStats();
 		var charging = false;
@@ -34,16 +35,17 @@ class IconTopDrawable {
 		Sys.println("Battery: "+stats.battery.format("%02.2f")+(charging?" charging":""));
 		if(
 			(show==0) ||
-			(show==1 && stats.battery > low) ||
+			(show==1 && stats.battery > limit) ||
 			(show==2 && !charging) ||
-			(show==3 && stats.battery > low && !charging)
+			(show==3 && stats.battery > limit && !charging)
 		){
 			return null;
 		}
 		return {
 			:charging => charging,
 			:battery=> stats.battery,
-			:low => low
+			:low => low,
+			:limit => limit
 		};
 	}
 	

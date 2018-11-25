@@ -13,6 +13,11 @@ class DigalogView extends Ui.WatchFace {
 	var isPartialOff = true;
 	var showSeconds = 2;
 	
+	var secondsTextDrawable = null;
+	var secondsPoint = null;
+	var secondsColor = 0;
+	var backgroundColor = -1;
+	
 	function initialize(){
 		Ui.WatchFace.initialize();
 	}
@@ -29,6 +34,7 @@ class DigalogView extends Ui.WatchFace {
 	            :height=>dc.getHeight()
 			});
 		}
+		secondsTextDrawable = View.findDrawableById("TimeSeconds");
     }
     
     function getBufferDc(dc){
@@ -62,7 +68,9 @@ class DigalogView extends Ui.WatchFace {
         drawable = View.findDrawableById("TimeMinutes");
         drawable.setColor(SettingGroups.getSetColor("ColorMinute"));
         drawable = View.findDrawableById("TimeSeconds");
-        drawable.setColor(SettingGroups.getSetColor("ColorSecond"));
+        secondsColor = SettingGroups.getSetColor("ColorSecond");
+        drawable.setColor(secondsColor);
+        backgroundColor = SettingGroups.getSetColor("ColorBackground");
         showSeconds = App.getApp().getProperty("ShowSeconds");
     }
 
@@ -106,7 +114,8 @@ class DigalogView extends Ui.WatchFace {
         IconTopDrawable.draw(bufferDc);
         IconBottomDrawable.draw(bufferDc);
         ArrowDrawable.draw(bufferDc,dateTime.hour,dateTime.min);
-    	drawBuffer(dc);
+        secondsPoint = null;
+        drawBuffer(dc);
     	if(
     		(showSeconds == 0) ||
     		(showSeconds == 1 && isSleeping) ||
@@ -125,20 +134,49 @@ class DigalogView extends Ui.WatchFace {
 		dc.fillEllipse(dc.getWidth()/2,dc.getHeight()/2,r,r);
     }
     
-    function setCenterClip(dc){
-    	var d = DeviceConfigs.getDialDimensions().get(:d);
-    	dc.setClip((dc.getWidth()-d/5)/2,(dc.getHeight()-d/5)/2,d/5,d/5);
+    function setSecondsHandClip(dc, d){
+    	dc.setClip(
+			secondsPoint[0]-d/24/2, 
+			secondsPoint[1]-d/24/2,
+			d/24,
+			d/24 
+		);
     }
     
     function drawSeconds(dc, sec){
-    	SecondDrawable.setClip(dc);
+		var dim = DeviceConfigs.getDialDimensions();
+		var d = dim.get(:d);
+    	//If old second hand position
+    	if(secondsPoint!=null){
+    		//Set seconds hand clip
+			setSecondsHandClip(dc,d);
+			//Erase old hand
+			drawBuffer(dc);
+		}
+		//get new second hand position
+		secondsPoint = ShapeHelper.getPointRotated(
+			[d/2,dim.get(:sh)+d/24/2-1], 
+			[dc.getWidth()/2, dc.getHeight()/2], 
+			Math.toRadians(sec*360/60)
+		);
+		//clip new seconds hand position
+		setSecondsHandClip(dc,d);
+		//draw new second hand
+		ShapeHelper.drawCircle(
+			dc, 
+			secondsPoint, 
+			d/24/2, 
+			secondsColor, 
+			backgroundColor,
+			d*0.01
+		);
+		//clip center
+    	dc.setClip((dc.getWidth()-d/5)/2,(dc.getHeight()-d/5)/2,d/5,d/5);
+    	//erase center
     	drawBuffer(dc);
-    	SecondDrawable.draw(dc, sec);
-    	setCenterClip(dc);
-    	drawBuffer(dc);
-    	var drawable = View.findDrawableById("TimeSeconds");
-        drawable.setText(sec.format("%02d"));
-        drawable.draw(dc);
+    	//draw center text
+        secondsTextDrawable.setText(sec.format("%02d"));
+        secondsTextDrawable.draw(dc);
     }
     
     function onPartialUpdate(dc){
