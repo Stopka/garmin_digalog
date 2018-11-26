@@ -1,7 +1,7 @@
 <layout id="WatchFace">
-    <label id="TimeDay" text="Lorem" x="center" y="DeviceConfigs.getDayY()" font="Gfx.FONT_MEDIUM" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
+    <label id="TimeDay" text="Lorem" x="center" y="DeviceConfigs.getDayY()" font="Gfx.FONT_MEDIUM" justification="Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER" color="Gfx.COLOR_DK_GRAY" />
     <label id="TimeHours" text="00" x="DeviceConfigs.getHourX()" y="center" font="Gfx.FONT_NUMBER_HOT" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_RED" />
     <label id="TimeMinutes" text="00" x="DeviceConfigs.getMinuteX()" y="center" font="Gfx.FONT_NUMBER_HOT" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_BLUE" />
     <label id="TimeSeconds" text="00" x="center" y="center" font="Gfx.FONT_TINY" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_YELLOW" />
-    <label id="TimeDate" text="00.00.0000" x="center" y="DeviceConfigs.getDateY()" font="Gfx.FONT_MEDIUM" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_DK_GRAY" />
+    <label id="TimeDate" text="00.00.0000" x="center" y="DeviceConfigs.getDateY()" font="Gfx.FONT_MEDIUM" justification="Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER" color="Gfx.COLOR_DK_GRAY" />
 </layout>

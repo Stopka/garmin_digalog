@@ -33,19 +33,14 @@ class DeviceConfigs {
 		//If not enough space above dial
 		if(dim.get(:sh)<Gfx.getFontHeight(Gfx.FONT_MEDIUM)){
 			//Position above time text
-			return (dim.get(:h)-Gfx.getFontHeight(Gfx.FONT_NUMBER_HOT))/2-Gfx.getFontHeight(Gfx.FONT_MEDIUM)-1;
+			return dim.get(:sh)+(dim.get(:d)-Gfx.getFontHeight(Gfx.FONT_NUMBER_HOT))/2-0.5*Gfx.getFontHeight(Gfx.FONT_MEDIUM);
 		}
-		return 0;
+		return Gfx.getFontHeight(Gfx.FONT_MEDIUM)/2;
 	}
 	
 	static function getDateY(){
 		var dim = getDialDimensions();
-		//If not enough space below dial
-		if(dim.get(:sh)<Gfx.getFontHeight(Gfx.FONT_MEDIUM)){
-			//Position below time text
-			return (dim.get(:h)+Gfx.getFontHeight(Gfx.FONT_NUMBER_HOT))/2+1;
-		}
-		return dim.get(:h)-Gfx.getFontHeight(Gfx.FONT_MEDIUM);
+		return dim.get(:h)-getDayY();
 	}
 	
 	static function getHourX(){
@@ -63,7 +58,8 @@ class DeviceConfigs {
 	}
 	
 	static function getDateTime(){
-		var clockTime = getTime();
-        return Time.Gregorian.utcInfo(Time.now().add(new Time.Duration(clockTime.timeZoneOffset)), Time.FORMAT_SHORT);
+		return Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
+		//var clockTime = getTime();
+        //return Time.Gregorian.utcInfo(Time.now().add(new Time.Duration(clockTime.timeZoneOffset)), Time.FORMAT_SHORT);
 	}
 }

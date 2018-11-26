@@ -77,21 +77,31 @@ class IconTopDrawable {
 			}
 		}
 		var dim = DeviceConfigs.getDialDimensions();
-		var y=dim.get(:sh)+dim.get(:d)/6.0;
-		var w = dim.get(:d)*0.12;
-		var spacer = w+2;
-		var x=dim.get(:sw)+dim.get(:d)/2.0-(iconCount-1)*spacer/2.0;
+		var y=dim.get(:sh)+(dim.get(:d)-Gfx.getFontHeight(Gfx.FONT_NUMBER_HOT))/2-0.5*Gfx.getFontHeight(Gfx.FONT_MEDIUM);
+		if(dim.get(:sh)<Gfx.getFontHeight(Gfx.FONT_MEDIUM)){
+			//y=dim.get(:sh)+dim.get(:d)/7.0;
+			y = dim.get(:sh)+(dim.get(:d)-Gfx.getFontHeight(Gfx.FONT_NUMBER_HOT))/2-1.5*Gfx.getFontHeight(Gfx.FONT_MEDIUM);
+		}
+		var w = Gfx.getFontHeight(Gfx.FONT_MEDIUM);//dim.get(:d)*0.12;
+		var spacer = [w+2,0];
+		var x=dim.get(:sw)+dim.get(:d)/2.0-(iconCount-1)*spacer[0]/2.0;
+		if(dim.get(:sw)>=Gfx.getFontHeight(Gfx.FONT_MEDIUM)){
+			spacer = [spacer[1],spacer[0]];
+			y = dim.get(:sh)+dim.get(:d)/2.0-(iconCount-1)*spacer[1]/2.0;
+			x = w/2;
+		}
 		if(stats[0]){
 			drawBatteryIcon(dc,stats[0],x,y,w);
-			x+=spacer;
+			x+=spacer[0];
+			y+=spacer[1];
 		}
 		if(stats[1]){
 			drawConnectionIcon(dc,stats[1],x,y,w);
-			x+=spacer;
+			x+=spacer[0];
+			y+=spacer[1];
 		}
 		if(stats[2]){
 			drawDisturbIcon(dc,stats[2],x,y,w);
-			x+=spacer;
 		}
 	}
 	
@@ -136,12 +146,25 @@ class IconTopDrawable {
 		var thickness=w/8;
 		var innerw=5*w/7;
 		dc.setPenWidth(thickness);
-		dc.setClip(x-innerw/2, y-innerw/2, innerw, innerw);
 		dc.setColor(SettingGroups.getSetColor("ColorIcon"),0);
-		for(var i=0; i<3; i++){
-			dc.drawEllipse(x-innerw/2, y+innerw/2, thickness*(2*i+1), thickness*(2*i+1));
+		if(Gfx.Dc has :setClip){
+			dc.setClip(x-innerw/2, y-innerw/2, innerw, innerw);
+			for(var i=0; i<3; i++){
+				dc.drawEllipse(x-innerw/2, y+innerw/2, thickness*(2*i+1), thickness*(2*i+1));
+			}
+			dc.clearClip();
+		}else{
+			//Draw arc without cliping
+			var center=[x-innerw/2, y+innerw/2];
+			for(var i=0; i<3; i++){
+				var point=[center[0],center[1]-thickness*(2*i+1)];
+				for(var i=0; i<4; i++){
+					var rotated=ShapeHelper.getPointRotated(point,center,Math.toRadians(90/4));
+					dc.drawLine(point[0], point[1],rotated[0], rotated[1]);
+					point = rotated;
+				}
+			}
 		}
-		dc.clearClip();
 		if(!stats.get(:connected)){
 			dc.setColor(SettingGroups.getSetColor("ColorWarning"),0);
 			dc.drawLine(x+innerw/2, y-innerw/2,x, y);
@@ -157,7 +180,7 @@ class IconTopDrawable {
 		dc.setColor(SettingGroups.getSetColor("ColorIcon"),0);
 		dc.fillEllipse(x, y, innerw/2.0, innerw/2.0);
 		dc.setColor(SettingGroups.getSetColor("ColorBackground"),0);
-		dc.drawLine(x-innerw/4.0, y,x+innerw/4.0, y);
+		dc.drawLine(Math.ceil(x-innerw/4.0), y,Math.floor(x+innerw/4.0), y);
 	}
     
 }

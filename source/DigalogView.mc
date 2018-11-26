@@ -84,7 +84,9 @@ class DigalogView extends Ui.WatchFace {
     // @param [Graphics.Dc] dc The drawing context
     // @return [Boolean] true if handled, false otherwise
     function onUpdate( dc ){
-    	dc.clearClip();
+    	if (Gfx.Dc has :clearClip) {   
+    		dc.clearClip();
+    	}
     	var bufferDc = getBufferDc(dc);
     	DialDrawable.draw(bufferDc);
     	var dateTime = DeviceConfigs.getDateTime();
@@ -135,12 +137,14 @@ class DigalogView extends Ui.WatchFace {
     }
     
     function setSecondsHandClip(dc, d){
-    	dc.setClip(
-			secondsPoint[0]-d/24/2, 
-			secondsPoint[1]-d/24/2,
-			d/24,
-			d/24 
-		);
+    	if(Gfx.Dc has :clearClip){
+	    	dc.setClip(
+				secondsPoint[0]-d/24/2, 
+				secondsPoint[1]-d/24/2,
+				d/24,
+				d/24 
+			);
+		}
     }
     
     function drawSeconds(dc, sec){
@@ -155,7 +159,7 @@ class DigalogView extends Ui.WatchFace {
 		}
 		//get new second hand position
 		secondsPoint = ShapeHelper.getPointRotated(
-			[d/2,dim.get(:sh)+d/24/2-1], 
+			[dim.get(:sw)+d/2,dim.get(:sh)+d/24/2-1], 
 			[dc.getWidth()/2, dc.getHeight()/2], 
 			Math.toRadians(sec*360/60)
 		);
@@ -171,7 +175,9 @@ class DigalogView extends Ui.WatchFace {
 			d*0.01
 		);
 		//clip center
-    	dc.setClip((dc.getWidth()-d/5)/2,(dc.getHeight()-d/5)/2,d/5,d/5);
+		if(Gfx.Dc has :clearClip){
+    		dc.setClip((dc.getWidth()-d/5)/2,(dc.getHeight()-d/5)/2,d/5,d/5);
+    	}
     	//erase center
     	drawBuffer(dc);
     	//draw center text
