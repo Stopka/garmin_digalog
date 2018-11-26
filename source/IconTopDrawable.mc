@@ -54,6 +54,7 @@ class IconTopDrawable {
 		var connected=Sys.getDeviceSettings().phoneConnected;
 		Sys.println(connected?"Phone connected":"Phone disconnected");
 		if(
+			!(Gfx.Dc has :clearClip) ||
 			(show==0) ||
 			(show==1 && !connected) ||
 			(show==2 && connected)

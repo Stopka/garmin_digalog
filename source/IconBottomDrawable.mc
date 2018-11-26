@@ -30,6 +30,7 @@ class IconBottomDrawable {
 		var alarms=Sys.getDeviceSettings().alarmCount;
 		Sys.println("Alarms: "+alarms.format("%02d"));
 		if(
+			!(Gfx.Dc has :clearClip) ||
 			(show == 0) ||
 			(show == 1 && alarms == 0) ||
 			(show == 2 && alarms == 0)

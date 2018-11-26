@@ -63,7 +63,8 @@ class DeviceConfigs {
 	}
 	
 	static function getDateTime(){
-		var clockTime = getTime();
-        return Time.Gregorian.utcInfo(Time.now().add(new Time.Duration(clockTime.timeZoneOffset)), Time.FORMAT_SHORT);
+		return Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
+		//var clockTime = getTime();
+        //return Time.Gregorian.utcInfo(Time.now().add(new Time.Duration(clockTime.timeZoneOffset)), Time.FORMAT_SHORT);
 	}
 }
