@@ -78,8 +78,12 @@ class IconTopDrawable {
 			}
 		}
 		var dim = DeviceConfigs.getDialDimensions();
-		var y=dim.get(:sh)+dim.get(:d)/6.0;
-		var w = dim.get(:d)*0.12;
+		var y=(dim.get(:h)-Gfx.getFontHeight(Gfx.FONT_NUMBER_HOT)-Gfx.getFontHeight(Gfx.FONT_MEDIUM))/2-1;//dim.get(:sh)+dim.get(:d)/4.0;
+		if(dim.get(:sh)<Gfx.getFontHeight(Gfx.FONT_MEDIUM)){
+			//y=dim.get(:sh)+dim.get(:d)/7.0;
+			y = (dim.get(:h)-Gfx.getFontHeight(Gfx.FONT_NUMBER_HOT))/2-1.5*Gfx.getFontHeight(Gfx.FONT_MEDIUM)-2;
+		}
+		var w = Gfx.getFontHeight(Gfx.FONT_MEDIUM);//dim.get(:d)*0.12;
 		var spacer = w+2;
 		var x=dim.get(:sw)+dim.get(:d)/2.0-(iconCount-1)*spacer/2.0;
 		if(stats[0]){
@@ -158,7 +162,7 @@ class IconTopDrawable {
 		dc.setColor(SettingGroups.getSetColor("ColorIcon"),0);
 		dc.fillEllipse(x, y, innerw/2.0, innerw/2.0);
 		dc.setColor(SettingGroups.getSetColor("ColorBackground"),0);
-		dc.drawLine(x-innerw/4.0, y,x+innerw/4.0, y);
+		dc.drawLine(Math.ceil(x-innerw/4.0), y,Math.floor(x+innerw/4.0), y);
 	}
     
 }
