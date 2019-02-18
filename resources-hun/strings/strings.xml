@@ -1,0 +1,64 @@
+<strings>
+
+    <string id="AppName">Digalog</string>
+    
+    <string id="TitleColorBackground">Háttérszín</string>
+    <string id="TitleColorDial">Tárcsázza a színt</string>
+    <string id="TitleColorDay">Hét nap színe</string>
+    <string id="TitleColorDate">Dátum színe</string>
+    <string id="TitleColorHour">Óra színe</string>
+    <string id="TitleColorMinute">Minimális szín</string>
+    <string id="TitleColorSecond">Második szín</string>
+    <string id="TitleColorIcon">Ikon színe</string>
+    <string id="TitleColorWarning">Figyelmeztetés színe</string>
+    <string id="TitleDateFormat">Dátum formátum</string>
+    <string id="TitleShowSeconds">Másodpercek megjelenítése</string>
+    <string id="TitleShowBattery">Az akkumulátor ikon megjelenítése</string>
+    <string id="TitleShowConnection">Kapcsolat ikon megjelenítése</string>
+    <string id="TitleShowDisturb">A nem zavaró ikon megjelenítése</string>
+    <string id="TitleShowNotification">Értesítési ikon megjelenítése</string>
+    <string id="TitleShowAlarm">Riasztás ikon megjelenítése</string>
+    
+    <string id="ColorBlack">Fekete</string>
+    <string id="ColorWhite">Fehér</string>
+    <string id="ColorRed">Piros</string>
+    <string id="ColorGreen">Zöld</string>
+    <string id="ColorBlue">Kék</string>
+    <string id="ColorOrange">Narancs</string>
+    <string id="ColorYellow">Sárga</string>
+    <string id="ColorPink">Rózsaszín</string>
+    <string id="ColorPurple">Lila</string>
+    <string id="ColorLightGrey">Világos szürke</string>
+    <string id="ColorDarkGrey">Sötétszürke</string>
+    <string id="ColorDarkRed">Sötét vörös</string>
+    <string id="ColorDarkGreen">Sötétzöld</string>
+    <string id="ColorDarkBlue">Sötétkék</string>
+            
+    <string id="DaySunday">Vasárnap</string>
+    <string id="DayMonday">Hétfő</string>
+    <string id="DayTuesday">Kedd</string>
+    <string id="DayWednesday">Szerda</string>
+    <string id="DayThursday">Csütürtök</string>
+    <string id="DayFriday">Péntek</string>
+    <string id="DaySaturday">Szombat</string>
+    
+    <string id="DateFormat00">NN.HH.EEEE</string>
+    <string id="DateFormat01">NN/HH/EEEE</string>
+    <string id="DateFormat02">HH/NN/EEEE</string>
+    <string id="DateFormat03">EEEE/HH/NN</string>
+    <string id="DateFormat04">EEEE-HH-NN</string>
+    
+    <string id="SecondsAwake">Ébresztés módban engedélyezve</string>   
+    
+    <string id="BatteryOnLow">Ha alacsony</string>
+    <string id="BatteryOnCharging">Töltéskor</string>
+    <string id="BatteryOnLowCharging">Ha alacsony vagy töltés van</string>
+    
+    <string id="ConnectionConnected">Ha csatlakoztatva van</string>
+    <string id="ConnectionDisconnected">Amikor leválasztották</string>
+    
+    <string id="CommonNever">Soha</string>
+    <string id="CommonAlways">Mindig</string>
+    <string id="CommonIcon">Ha nem nulla, csak ikon</string>
+    <string id="CommonCount">Mikor nem nulla, számít</string>
+</strings>
